@@ -19,10 +19,15 @@ public class ReportValidator {
             errors.add(content_error);
         }
 
+        String status_error = _validateStatus(r.getStatus());
+        if(!status_error.equals("")) {
+            errors.add(status_error);
+        }
+
         return errors;
     }
 
-    private static String _validateTitle(String title) {
+	private static String _validateTitle(String title) {
         if(title == null || title.equals("")) {
             return "タイトルを入力してください。";
             }
@@ -33,6 +38,14 @@ public class ReportValidator {
     private static String _validateContent(String content) {
         if(content == null || content.equals("")) {
             return "内容を入力してください。";
+            }
+
+        return "";
+    }
+
+	private static String _validateStatus(String status) {
+        if(status == null || status.equals("")) {
+            return "商談状況を入力してください。";
             }
 
         return "";
